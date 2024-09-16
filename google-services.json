@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "42880877051",
+    "project_id": "tiggersapp-cd1bb",
+    "storage_bucket": "tiggersapp-cd1bb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42880877051:android:424f9a1b9cda0cf4ab0b5e",
+        "android_client_info": {
+          "package_name": "com.tiggers.approom"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNQ7N8hkHvd07VA4B9egje1RYMyBEa7lU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
