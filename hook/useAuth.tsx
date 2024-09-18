@@ -44,16 +44,20 @@ const useAuth = () => {
       setAuthState((prevState) => ({ ...prevState, loading: true }));
       await GoogleSignin.hasPlayServices();
       const user = await GoogleSignin.signIn();
-      const userId = user?.data?.user?.id;
-      if (userId) {
-        await SecureStore.setItemAsync("token", userId);
+      const tok = await GoogleSignin.getTokens();
+      // const userId = user?.data?.user?.id;
+      // const accessToken = user?.data?.idToken;
+      const accessToken = tok.accessToken;
+      console.log({ tok });
+      if (accessToken) {
+        await SecureStore.setItemAsync("token", accessToken);
         setAuthState({
           isSignedIn: true,
-          userInfo: userId,
+          userInfo: accessToken,
           error: null,
           loading: false,
         });
-        setIsAuth(userId);
+        setIsAuth(accessToken);
       }
     } catch (error) {
       setAuthState((prevState) => ({
@@ -78,7 +82,6 @@ const useAuth = () => {
         error: null,
         loading: false,
       });
-      // await router.push("/");
     } catch (error) {
       setAuthState((prevState) => ({
         ...prevState,
