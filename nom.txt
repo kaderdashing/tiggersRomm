@@ -1,2 +1,11 @@
 tiggersapp-cd1bb
 com.tiggers.approom
+link facebook
+https://tiggersapp-cd1bb.firebaseapp.com/__/auth/handler
+
+ facebookAppId: "1234",
+    facebookDisplayName: "Your App Display Name",
+    facebookScheme: "fb1234",
+    facebookClientToken: "56789",
+
+    E4:2F:08:1C:47:97:D5:09:61:D0:0D:D8:EA:29:29:D7:02:F6:E1:9B

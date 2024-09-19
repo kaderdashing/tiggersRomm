@@ -4,6 +4,7 @@ import checkIfSignedIn from "../utils/auth"; // Assurez-vous du chemin correct
 import * as SecureStore from "expo-secure-store";
 import { router } from "expo-router";
 import { useIsAuth } from "@/ProviderAuthContext";
+import sendToken from "@/utils/sendToken";
 interface AuthState {
   isSignedIn: boolean;
   userInfo: any | null;
@@ -51,6 +52,8 @@ const useAuth = () => {
       console.log({ tok });
       if (accessToken) {
         await SecureStore.setItemAsync("token", accessToken);
+        await sendToken("google");
+
         setAuthState({
           isSignedIn: true,
           userInfo: accessToken,
@@ -71,10 +74,10 @@ const useAuth = () => {
 
   const signout = async () => {
     try {
-      await GoogleSignin.revokeAccess();
-      await GoogleSignin.signOut();
+      // await GoogleSignin.revokeAccess();
+      // await GoogleSignin.signOut();
       await SecureStore.deleteItemAsync("token");
-      setIsAuth(null);
+      await setIsAuth(null);
 
       setAuthState({
         isSignedIn: false,

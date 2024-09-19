@@ -13,10 +13,10 @@ import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
 import { GoogleSigninButton } from "@react-native-google-signin/google-signin";
 import useAuth from "@/hook/useAuth";
 import { useIsAuth } from "@/ProviderAuthContext";
+import FacebookLogin1 from "@/src/core/FacebookLogin1";
 
 export default function SignIN({ change }: { change: (value: any) => void }) {
   const { isSignedIn, userInfo, error, loading, signin, signout } = useAuth();
-  const { isAuth, setIsAuth } = useIsAuth();
   return (
     <View style={{ height: "100%" }}>
       <ImageBackground
@@ -56,7 +56,7 @@ export default function SignIN({ change }: { change: (value: any) => void }) {
                 onPress={signin}
                 style={{ alignSelf: "center" }}
               />
-              <Image
+              {/* <Image
                 source={require("../../assets/images/facebook.png")}
                 style={{
                   width: "64%",
@@ -64,7 +64,16 @@ export default function SignIN({ change }: { change: (value: any) => void }) {
                   alignSelf: "center",
                   marginTop: -50,
                 }}
-              />
+              /> */}
+              <View
+                style={{
+                  width: "100%",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <FacebookLogin1 />
+              </View>
               <View
                 style={{
                   alignSelf: "center",

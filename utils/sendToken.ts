@@ -1,7 +1,7 @@
 import * as SecureStore from "expo-secure-store";
 import axios from "axios";
 
-const sendToken = async () => {
+const sendToken = async (provider: "google" | "facebook") => {
   try {
     const token = await SecureStore.getItemAsync("token");
 
@@ -9,9 +9,12 @@ const sendToken = async () => {
       throw new Error("No token found");
     }
 
+    // Dynamic endpoint based on the provider
+    const url = `https://proud-liberation-production.up.railway.app/api/v1/auth/${provider}`;
+
     const response = await axios.post(
-      "https://proud-liberation-production.up.railway.app/api/v1/auth/google",
-      { access_token: token }, // Le corps de la requête
+      url,
+      { access_token: token }, // The request body
       {
         headers: {
           "Content-Type": "application/json",
@@ -21,7 +24,7 @@ const sendToken = async () => {
     );
 
     return response;
-  } catch (error) {
+  } catch (error: any) {
     if (axios.isAxiosError(error)) {
       console.error("Axios error: ", error.response?.data || error.message);
     } else {

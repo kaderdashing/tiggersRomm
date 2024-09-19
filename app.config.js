@@ -8,6 +8,7 @@ export default {
     scheme: "myapp",
     userInterfaceStyle: "automatic",
     jsEngine: "jsc",
+
     splash: {
       image: "./assets/images/splash.png",
       resizeMode: "contain",
@@ -35,6 +36,19 @@ export default {
       "@react-native-google-signin/google-signin",
       "expo-router",
       "expo-secure-store",
+      [
+        "react-native-fbsdk-next",
+        {
+          appID: "1082815616797627",
+          clientToken: "732520da82a179d16d7f0992572351d4",
+          displayName: "tiggers auth native",
+          scheme: "fb1082815616797627",
+          advertiserIDCollectionEnabled: false,
+          autoLogAppEventsEnabled: false,
+          isAutoInitEnabled: true,
+        },
+      ],
+      "expo-tracking-transparency",
     ],
     experiments: {
       typedRoutes: true,

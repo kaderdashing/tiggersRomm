@@ -6,31 +6,35 @@ import sendToken from "@/utils/sendToken";
 import MyInputText from "@/src/core/myInputText";
 import * as SecureStore from "expo-secure-store";
 
+// import FacebookLogin1 from "@/src/core/FacebookLogin1";
+// import auth from '@react-native-firebase/auth';
 export default function AuthenticatedApp() {
   const { signout, userInfo } = useAuth();
-  const { isAuth, setIsAuth } = useIsAuth();
   const [kader, setKader] = useState<any>(null);
 
   useEffect(() => {
     const fetchToken = async () => {
       try {
-        await sendToken();
-        // setKader(response);
+        const token = await SecureStore.getItemAsync("token");
+        if (token) {
+          setKader(token);
+        } else {
+          console.log("Token not found");
+        }
       } catch (error) {
         console.error("Error fetching token:", error);
       }
-      // setKader(token);
     };
 
     fetchToken();
   }, []);
-  // const token = await SecureStore.getItemAsync("token");
 
   return (
     <View>
-      <Text>AuthenticatedApp with {userInfo}</Text>
-      <Button title="Logout" onPress={signout} />
-      {/* {kader && <Text>{JSON.stringify(kader, null, 2)}</Text>} */}
+      <View style={{ padding: 30 }}>
+        <Button title="Logout" onPress={signout} />
+      </View>
+      {kader && <Text>{JSON.stringify(kader, null, 2)} </Text>}
     </View>
   );
 }
