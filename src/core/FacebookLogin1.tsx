@@ -26,7 +26,7 @@ export default function FacebookLogin1() {
   const onLoginFinished = async (error: any, data: object) => {
     try {
       const tokenData = await AccessToken.getCurrentAccessToken();
-
+      console.log({ tokenData });
       if (tokenData?.accessToken) {
         const accessToken = tokenData.accessToken;
 

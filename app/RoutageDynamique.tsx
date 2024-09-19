@@ -6,10 +6,6 @@ import UnauthenticatedApp from "@/route/UnauthenticatedApp";
 import * as SecureStore from "expo-secure-store";
 import { useIsAuth } from "@/ProviderAuthContext";
 
-interface RoutageDynamiqueProps {
-  test: any;
-}
-
 export default function RoutageDynamique() {
   const { isSignedIn, userInfo } = useAuth();
   const { isAuth } = useIsAuth();
@@ -24,10 +20,12 @@ export default function RoutageDynamique() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    height: "100%",
+    width: "100%",
   },
+
   title: {
     fontSize: 20,
     fontWeight: "bold",

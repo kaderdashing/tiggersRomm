@@ -31,7 +31,7 @@ export default function SignIN({ change }: { change: (value: any) => void }) {
             style={{
               height: "95%",
 
-              justifyContent: "flex-end", // Aligner verticalement au centre
+              justifyContent: "flex-end",
             }}
           >
             <View
@@ -56,15 +56,7 @@ export default function SignIN({ change }: { change: (value: any) => void }) {
                 onPress={signin}
                 style={{ alignSelf: "center" }}
               />
-              {/* <Image
-                source={require("../../assets/images/facebook.png")}
-                style={{
-                  width: "64%",
-                  height: 40,
-                  alignSelf: "center",
-                  marginTop: -50,
-                }}
-              /> */}
+
               <View
                 style={{
                   width: "100%",
