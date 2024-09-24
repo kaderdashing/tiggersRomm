@@ -5,6 +5,7 @@ import * as SecureStore from "expo-secure-store";
 import { router } from "expo-router";
 import { useIsAuth } from "@/ProviderAuthContext";
 import sendToken from "@/utils/sendToken";
+import { LoginManager } from "react-native-fbsdk-next";
 interface AuthState {
   isSignedIn: boolean;
   userInfo: any | null;
@@ -44,14 +45,14 @@ const useAuth = () => {
     try {
       setAuthState((prevState) => ({ ...prevState, loading: true }));
       await GoogleSignin.hasPlayServices();
-      const user = await GoogleSignin.signIn();
+      await GoogleSignin.signIn();
       const tok = await GoogleSignin.getTokens();
-      // const userId = user?.data?.user?.id;
-      // const accessToken = user?.data?.idToken;
+
       const accessToken = tok.accessToken;
       console.log({ tok });
       if (accessToken) {
         await SecureStore.setItemAsync("token", accessToken);
+        await SecureStore.setItemAsync("authWith", "google");
         await sendToken("google");
 
         setAuthState({
@@ -74,11 +75,20 @@ const useAuth = () => {
 
   const signout = async () => {
     try {
-      // await GoogleSignin.revokeAccess();
-      // await GoogleSignin.signOut();
-      await SecureStore.deleteItemAsync("token");
-      await setIsAuth(null);
-
+      // console.log("yoooooyoyoyoyoyoyoyo");
+      const authWith = await SecureStore.getItem("authWith");
+      if (authWith === "google") {
+        console.log("google");
+        await GoogleSignin.revokeAccess();
+        await GoogleSignin.signOut();
+        await SecureStore.deleteItemAsync("token");
+        await setIsAuth(null);
+      } else if (authWith === "facebook") {
+        console.log("facebook");
+        await LoginManager.logOut();
+        await SecureStore.deleteItemAsync("token");
+        await setIsAuth(null);
+      }
       setAuthState({
         isSignedIn: false,
         userInfo: null,

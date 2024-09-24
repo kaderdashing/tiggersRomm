@@ -49,13 +49,65 @@ export default function SignIN({ change }: { change: (value: any) => void }) {
                   marginTop: 100,
                 }}
               />
-
-              <GoogleSigninButton
-                size={GoogleSigninButton.Size.Standard}
-                color={GoogleSigninButton.Color.Dark}
+              {/* <View
+                style={{
+                  borderRadius: 70,
+                  overflow: "hidden",
+                  // borderWidth: 2,
+                  // borderColor: "yellow",
+                  width: 230,
+                  height: 50,
+                  alignSelf: "center",
+                }}
+              >
+                <GoogleSigninButton
+                  size={GoogleSigninButton.Size.Standard}
+                  color={GoogleSigninButton.Color.Dark}
+                  onPress={signin}
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                  }}
+                />
+              </View> */}
+              <TouchableOpacity
+                style={{
+                  borderRadius: 70,
+                  overflow: "hidden",
+                  width: 230,
+                  height: 50,
+                  alignSelf: "center",
+                  backgroundColor: "white",
+                  position: "relative",
+                  justifyContent: "center",
+                  borderColor: "black",
+                }}
                 onPress={signin}
-                style={{ alignSelf: "center" }}
-              />
+              >
+                <Image
+                  source={require("../../assets/images/google.png")}
+                  style={{
+                    position: "absolute",
+                    left: 15,
+                    width: 26,
+                    height: 26,
+                    top: 10,
+                  }}
+                />
+                <Text
+                  style={{
+                    position: "absolute",
+                    left: 0,
+                    right: 0,
+                    textAlign: "center",
+                    top: "50%",
+                    transform: [{ translateY: -12 }],
+                    fontSize: 18,
+                  }}
+                >
+                  Google
+                </Text>
+              </TouchableOpacity>
 
               <View
                 style={{

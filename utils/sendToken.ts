@@ -9,12 +9,11 @@ const sendToken = async (provider: "google" | "facebook") => {
       throw new Error("No token found");
     }
 
-    // Dynamic endpoint based on the provider
     const url = `https://proud-liberation-production.up.railway.app/api/v1/auth/${provider}`;
 
     const response = await axios.post(
       url,
-      { access_token: token }, // The request body
+      { access_token: token },
       {
         headers: {
           "Content-Type": "application/json",
