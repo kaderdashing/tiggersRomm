@@ -4,7 +4,7 @@ import useAuth from "@/hook/useAuth";
 import AuthenticatedApp from "@/route/AuthenticatedApp";
 import UnauthenticatedApp from "@/route/UnauthenticatedApp";
 import * as SecureStore from "expo-secure-store";
-import { useIsAuth } from "@/ProviderAuthContext";
+import { useIsAuth } from "@/Context/ProviderAuthContext";
 
 export default function RoutageDynamique() {
   const { isSignedIn, userInfo } = useAuth();

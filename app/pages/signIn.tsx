@@ -12,7 +12,6 @@ import React from "react";
 import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
 import { GoogleSigninButton } from "@react-native-google-signin/google-signin";
 import useAuth from "@/hook/useAuth";
-import { useIsAuth } from "@/ProviderAuthContext";
 import FacebookLogin1 from "@/src/core/FacebookLogin1";
 
 export default function SignIN({ change }: { change: (value: any) => void }) {
@@ -49,27 +48,7 @@ export default function SignIN({ change }: { change: (value: any) => void }) {
                   marginTop: 100,
                 }}
               />
-              {/* <View
-                style={{
-                  borderRadius: 70,
-                  overflow: "hidden",
-                  // borderWidth: 2,
-                  // borderColor: "yellow",
-                  width: 230,
-                  height: 50,
-                  alignSelf: "center",
-                }}
-              >
-                <GoogleSigninButton
-                  size={GoogleSigninButton.Size.Standard}
-                  color={GoogleSigninButton.Color.Dark}
-                  onPress={signin}
-                  style={{
-                    height: "100%",
-                    width: "100%",
-                  }}
-                />
-              </View> */}
+
               <TouchableOpacity
                 style={{
                   borderRadius: 70,

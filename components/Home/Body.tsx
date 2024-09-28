@@ -1,33 +1,52 @@
-import { View, Image, StyleSheet } from "react-native";
+import {
+  View,
+  Image,
+  StyleSheet,
+  Touchable,
+  TouchableOpacity,
+  Text,
+} from "react-native";
 import React from "react";
 import {
   responsiveHeight,
   responsiveWidth,
 } from "react-native-responsive-dimensions";
+import { useRoom } from "@/Context/RoomContext";
 
 const images = [
-  require("./Bild/body1.png"),
-  require("./Bild/body2.png"),
-  require("./Bild/body3.png"),
-  require("./Bild/body4.png"),
-  require("./Bild/body5.png"),
-  require("./Bild/body6.png"),
-  require("./Bild/body7.png"),
-  require("./Bild/body8.png"),
+  { id: 1, nom: "Image 1", source: require("./Bild/body1.png") },
+  { id: 2, nom: "Image 2", source: require("./Bild/body2.png") },
+  { id: 3, nom: "Image 3", source: require("./Bild/body3.png") },
+  { id: 4, nom: "Image 4", source: require("./Bild/body4.png") },
+  { id: 5, nom: "Image 5", source: require("./Bild/body5.png") },
+  { id: 6, nom: "Image 6", source: require("./Bild/body6.png") },
+  { id: 7, nom: "Image 7", source: require("./Bild/body7.png") },
+  { id: 8, nom: "Image 8", source: require("./Bild/body8.png") },
 ];
 
 export default function Body() {
+  const { setRoom } = useRoom();
+
+  const handleClick = (id: number) => {
+    console.log(`Image with ID ${id} clicked`);
+    setRoom("0");
+  };
+
   return (
     <View style={styles.top}>
-      {images.map((item, index) => (
-        <View key={index} style={styles.imageContainer}>
-          <Image style={styles.image} source={item} />
-        </View>
+      {images.map((item) => (
+        <TouchableOpacity
+          key={item.id}
+          style={styles.imageContainer}
+          onPress={() => handleClick(item.id)}
+        >
+          <Image style={styles.image} source={item.source} />
+          <Text>{item.nom}</Text>
+        </TouchableOpacity>
       ))}
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   top: {
     flexDirection: "row",

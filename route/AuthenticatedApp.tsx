@@ -1,19 +1,16 @@
-import { View, Text, Button, TextInput } from "react-native";
+import { View } from "react-native";
 import React, { useEffect, useState } from "react";
 import useAuth from "@/hook/useAuth";
-import { useIsAuth } from "@/ProviderAuthContext";
-import sendToken from "@/utils/sendToken";
-import MyInputText from "@/src/core/myInputText";
-import * as SecureStore from "expo-secure-store";
-import Header from "@/components/Home/Header";
-import HomePage from "@/app/pages/HomePage";
 
+import * as SecureStore from "expo-secure-store";
+import HomePage from "@/app/pages/HomePage";
+import RoomPage from "@/app/pages/RoomPage";
+import { RoomProvider, useRoom } from "../Context/RoomContext"; // Import your context
 // import FacebookLogin1 from "@/src/core/FacebookLogin1";
 // import auth from '@react-native-firebase/auth';
 export default function AuthenticatedApp() {
   const { signout, userInfo } = useAuth();
   const [currentToken, setCurrentToken] = useState<any>(null);
-
   useEffect(() => {
     const fetchToken = async () => {
       try {
@@ -32,8 +29,14 @@ export default function AuthenticatedApp() {
   }, []);
 
   return (
-    <View>
-      <HomePage />
-    </View>
+    <RoomProvider>
+      <MainApp />
+    </RoomProvider>
   );
+}
+
+function MainApp() {
+  const { room } = useRoom();
+
+  return <View>{room === "1" ? <HomePage /> : <RoomPage />}</View>;
 }

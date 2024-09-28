@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
-import checkIfSignedIn from "../utils/auth"; // Assurez-vous du chemin correct
+import checkIfSignedIn from "../utils/auth";
 import * as SecureStore from "expo-secure-store";
-import { router } from "expo-router";
-import { useIsAuth } from "@/ProviderAuthContext";
 import sendToken from "@/utils/sendToken";
 import { LoginManager } from "react-native-fbsdk-next";
+import { useIsAuth } from "@/Context/ProviderAuthContext";
 interface AuthState {
   isSignedIn: boolean;
   userInfo: any | null;

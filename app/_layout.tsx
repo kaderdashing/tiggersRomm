@@ -13,7 +13,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import * as SecureStore from "expo-secure-store";
 import RoutageDynamique from "./RoutageDynamique";
 import checkIfSignedIn from "../utils/auth"; // Assurez-vous du chemin correct
-import { ProviderAuthContext } from "@/ProviderAuthContext";
+import { ProviderAuthContext } from "@/Context/ProviderAuthContext";
 
 export { ErrorBoundary } from "expo-router";
 

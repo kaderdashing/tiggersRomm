@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { requestTrackingPermissionsAsync } from "expo-tracking-transparency";
 import { AccessToken, Settings, LoginManager } from "react-native-fbsdk-next";
 import * as SecureStore from "expo-secure-store";
-import { useIsAuth } from "@/ProviderAuthContext";
 import sendToken from "@/utils/sendToken";
+import { useIsAuth } from "@/Context/ProviderAuthContext";
 
 export default function FacebookLogin1() {
   const { isAuth, setIsAuth } = useIsAuth();
@@ -27,7 +27,7 @@ export default function FacebookLogin1() {
     try {
       const result = await LoginManager.logInWithPermissions([
         "public_profile",
-        "email",
+        // "email",
       ]);
       console.log({ result });
       if (result.isCancelled) {
