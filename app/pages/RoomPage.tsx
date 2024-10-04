@@ -1,30 +1,43 @@
-import { View, ImageBackground, Dimensions } from "react-native";
+import {
+  View,
+  ImageBackground,
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+  Dimensions,
+  ScrollView,
+} from "react-native";
 import React from "react";
-import { useRoom } from "@/Context/RoomContext";
 import HeadersRoom from "@/components/Room/HeadersRoom";
-import BodyRoom from "@/components/Room/BodyRoom";
 import FooterRoom from "@/components/Room/FooterRoom";
+import HyperBodyRoom from "@/components/Room/BodyRoom";
+import LowerBody from "@/components/Room/LowerBody";
+import RTCW from "@/components/Room/RTCW";
+import AlternativeTest from "@/components/Room/AlternativeTest";
 
 const { width, height } = Dimensions.get("window");
 
-export default function RoomPage() {
-  const { setRoom } = useRoom();
-
+const RoomPage = () => {
   return (
-    <View style={{ paddingTop: 30 }}>
-      <ImageBackground
-        source={require("../../assets/images/backroom.png")}
-        style={{ width, height }}
-        imageStyle={{ resizeMode: "cover" }}
-      >
-        <View style={{ flex: 1, justifyContent: "space-between" }}>
-          <HeadersRoom />
-          <BodyRoom />
-          <FooterRoom />
-        </View>
-      </ImageBackground>
-    </View>
+    <ScrollView>
+      <View style={{ paddingTop: 30 }}>
+        <ImageBackground
+          source={require("../../assets/images/backroom.png")}
+          style={{ width, height }}
+          imageStyle={{ resizeMode: "cover" }}
+        >
+          <View style={{ flex: 1, justifyContent: "space-between" }}>
+            <HeadersRoom />
+            {/* <RTCW /> */}
+            <AlternativeTest />
+            <HyperBodyRoom />
+            <LowerBody />
+            <FooterRoom />
+          </View>
+        </ImageBackground>
+      </View>
+    </ScrollView>
   );
-}
+};
 
-// ../../assets/images/backroom.png
+export default RoomPage;

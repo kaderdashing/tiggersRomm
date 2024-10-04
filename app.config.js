@@ -25,7 +25,7 @@ export default {
       },
       package: "com.tiggers.approom",
       googleServicesFile: process.env.GOOGLE_SERVICES_JSON,
-      permissions: ["INTERNET"],
+      permissions: ["INTERNET", "ACCESS_NETWORK_STATE"],
     },
     web: {
       bundler: "metro",

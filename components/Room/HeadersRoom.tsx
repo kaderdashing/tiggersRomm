@@ -1,4 +1,4 @@
-import { View, Text, Button, TouchableOpacity } from "react-native";
+import { View, Text, Button, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import { useRoom } from "@/Context/RoomContext";
 import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
@@ -20,44 +20,97 @@ export default function HeadersRoom() {
           style={{
             borderWidth: 1,
             borderColor: "white",
-            borderRadius: 20,
-            paddingVertical: 4,
-            paddingHorizontal: 6,
-            shadowColor: "white",
-            elevation: 10,
+            borderRadius: 8,
+            paddingVertical: 2,
+            paddingHorizontal: 10,
+            shadowColor: "#FFF", // Ombre plus foncée
+            shadowOffset: { width: 0, height: 2 }, // Positionnement de l'ombre
+            shadowOpacity: 0.8, // Transparence de l'ombre
+            shadowRadius: 5, // Rayon de l'ombre
+            elevation: 10, // Ombre sur Android
+            backgroundColor: "#333", // Assure une couleur de fond pour l'ombre
             flexDirection: "row",
-            // width: "25%",
+            alignItems: "center", //
+            justifyContent: "space-between",
+            width: "45%",
           }}
         >
-          <FontAwesome name="power-off" size={24} color="white" />
-          {/* Icône de profil (user icon de FontAwesome) */}
-          <FontAwesome name="user" size={24} color="white" />
+          <FontAwesome
+            name="user"
+            size={18}
+            color="white"
+            style={{ alignSelf: "center" }}
+          />
 
-          {/* Icône de 3 points (more icon de MaterialIcons) */}
-          <MaterialIcons name="more-horiz" size={24} color="white" />
+          <View>
+            <Text style={{ color: "white" }}>stella white</Text>
 
-          {/* Icône de chevrons vers le haut et vers le bas (Ionicons) */}
-          <Ionicons name="chevron-up" size={24} color="white" />
-          <Ionicons name="chevron-down" size={24} color="white" />
+            <View
+              style={{
+                flexDirection: "row",
+                // marginTop: 4,
+              }}
+            >
+              <Ionicons
+                name="flame"
+                size={12}
+                color="white"
+                style={{ alignSelf: "center" }}
+              />
+              <Text style={{ color: "white", marginLeft: 4 }}>1263</Text>
+            </View>
+          </View>
 
-          {/* Icône de flamme (flame icon d'Ionicons) */}
-          <Ionicons name="flame" size={24} color="orange" />
-
-          {/* Icône d'agenda ou cahier (calendar icon de FontAwesome) */}
-          <FontAwesome name="calendar" size={24} color="white" />
-          <Ionicons name="swap-vertical" size={24} color="white" />
+          <FontAwesome
+            name="calendar"
+            size={18}
+            color="white"
+            style={{ alignSelf: "center" }}
+          />
         </View>
-        <Text
+        <View
           style={{
-            color: "white",
+            borderWidth: 1,
+            borderColor: "white",
+            borderRadius: 8,
+            paddingVertical: 2,
+            paddingHorizontal: 10,
+            shadowColor: "#FFF", // Ombre plus foncée
+            shadowOffset: { width: 0, height: 2 }, // Positionnement de l'ombre
+            shadowOpacity: 0.8, // Transparence de l'ombre
+            shadowRadius: 5, // Rayon de l'ombre
+            elevation: 10, // Ombre sur Android
+            backgroundColor: "#333", // Assure une couleur de fond pour l'ombre
+            flexDirection: "row",
+            alignItems: "center", //
+            justifyContent: "space-between",
           }}
         >
-          HeadersRoom
-        </Text>
+          <FontAwesome
+            name="user"
+            size={18}
+            color="white"
+            style={{ alignSelf: "center" }}
+          />
+          <Text style={{ color: "white", marginLeft: 7 }}>25</Text>
+        </View>
+        <View style={{ alignSelf: "center" }}>
+          <Image
+            source={require("../../assets/images/all.png")}
+            style={{ alignSelf: "center" }}
+          />
+        </View>
+        <View style={{ alignSelf: "center" }}>
+          <Image
+            source={require("../../assets/images/MenuPoint.png")}
+            style={{ alignSelf: "center" }}
+          />
+        </View>
         <TouchableOpacity
           onPress={() => {
             setRoom("1");
           }}
+          style={{ alignSelf: "center" }}
         >
           <FontAwesome name="power-off" size={24} color="white" />
         </TouchableOpacity>
