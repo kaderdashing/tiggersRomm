@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import React, { useEffect, useState } from "react";
 
 export default function AlternativeTest() {
-  const [isConnected, setIsConnected] = useState(false);
+  const [isConnected, setIsConnected] = useState<boolean>(false);
   const [serverMessage, setServerMessage] = useState("");
 
   useEffect(() => {
@@ -11,11 +11,18 @@ export default function AlternativeTest() {
     ws.onopen = () => {
       console.log("WebSocket connection opened");
       setIsConnected(true); // Update state to reflect successful connection
+
+      // Send the "join" message to the server
+      const joinMessage = JSON.stringify({
+        channel: "join",
+        data: "anything",
+      });
+      ws.send(joinMessage);
     };
 
     ws.onmessage = (e) => {
       console.log("Message from server:", e.data);
-      setServerMessage(e.data); // Store the server message
+      setServerMessage(e?.data); // Store the server message
     };
 
     ws.onerror = (e) => {

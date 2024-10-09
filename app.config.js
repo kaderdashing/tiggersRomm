@@ -25,7 +25,12 @@ export default {
       },
       package: "com.tiggers.approom",
       googleServicesFile: process.env.GOOGLE_SERVICES_JSON,
-      permissions: ["INTERNET", "ACCESS_NETWORK_STATE"],
+      permissions: [
+        "INTERNET",
+        "ACCESS_NETWORK_STATE",
+        "CAMERA",
+        "RECORD_AUDIO",
+      ],
     },
     web: {
       bundler: "metro",
@@ -36,6 +41,7 @@ export default {
       "@react-native-google-signin/google-signin",
       "expo-router",
       "expo-secure-store",
+      "@config-plugins/react-native-webrtc",
       [
         "react-native-fbsdk-next",
         {

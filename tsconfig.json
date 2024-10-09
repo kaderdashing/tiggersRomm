@@ -14,6 +14,7 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "src/core/FacebookLogin.jsx",
-    "src/core/FacebookLogin1.tsx"
+    "src/core/FacebookLogin1.tsx",
+    "components/Room/KaderRtc.jsx"
   ]
 }

@@ -14,6 +14,9 @@ import HyperBodyRoom from "@/components/Room/BodyRoom";
 import LowerBody from "@/components/Room/LowerBody";
 import RTCW from "@/components/Room/RTCW";
 import AlternativeTest from "@/components/Room/AlternativeTest";
+import WebRtcChat from "@/components/Room/Alternative2";
+import Yazid from "@/components/Room/Yazid1";
+import KaderRtc from "@/components/Room/KaderRtc";
 
 const { width, height } = Dimensions.get("window");
 
@@ -29,7 +32,10 @@ const RoomPage = () => {
           <View style={{ flex: 1, justifyContent: "space-between" }}>
             <HeadersRoom />
             {/* <RTCW /> */}
-            <AlternativeTest />
+            {/* <AlternativeTest /> */}
+            {/* <WebRtcChat /> */}
+            {/* <Yazid /> */}
+            <KaderRtc />
             <HyperBodyRoom />
             <LowerBody />
             <FooterRoom />
